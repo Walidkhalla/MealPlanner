@@ -1,0 +1,89 @@
+<resources>
+    <string name="app_name">Meal Planner</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        L dignissim.
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <!-- Recipe Details -->
+    <string name="recipe_image">Recipe Image</string>
+    <string name="time">Time</string>
+    <string name="servings">Servings</string>
+    <string name="calories">Calories</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="your_rating">Your Rating</string>
+    <string name="add_to_favorites">Add to Favorites</string>
+    <string name="edit_recipe">Edit Recipe</string>
+    <string name="delete_recipe">Delete Recipe</string>
+    
+    <!-- Recipe List -->
+    <string name="all">All</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_recipes">No recipes found\nTap + to add your first recipe</string>
+    <string name="add_recipe">Add Recipe</string>
+    <string name="search_recipes">Search recipes...</string>
+    
+    <!-- Meal Plan -->
+    <string name="previous_week">Previous Week</string>
+    <string name="next_week">Next Week</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="add_breakfast">+ Add breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="add_lunch">+ Add lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="add_dinner">+ Add dinner</string>
+    <string name="snacks">Snacks</string>
+    <string name="add_snack">+ Add snack</string>
+    <string name="daily_nutrition">Daily Nutrition</string>
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbs</string>
+    <string name="fat">Fat</string>
+    <string name="generate_grocery_list">Generate Grocery List</string>
+    <string name="today">Today</string>
+    <string name="clear_plan">Clear Plan</string>
+    
+    <!-- Grocery List -->
+    <string name="search_items">Search items...</string>
+    <string name="filter">Filter</string>
+    <string name="items_checked">Items checked: %1$d/%2$d</string>
+    <string name="no_grocery_items">No grocery items found</string>
+    <string name="add_grocery_item">Add grocery item</string>
+    <string name="clear_completed">Clear Completed</string>
+    <string name="clear_all">Clear All</string>
+    <string name="sort">Sort</string>
+    <string name="by_category">By Category</string>
+    <string name="by_name">By Name</string>
+    <string name="edit_item">Edit item</string>
+    
+    <!-- Add Grocery Dialog -->
+    <string name="item_name">Item Name</string>
+    <string name="amount">Amount</string>
+    <string name="unit">Unit</string>
+    <string name="category">Category</string>
+    
+    <!-- Dashboard -->
+    <string name="welcome">Welcome!</string>
+    <string name="view_recipes">View Recipes</string>
+    <string name="view_meal_plan">View Meal Plan</string>
+    <string name="view_grocery_list">View Grocery List</string>
+    <string name="logout">Logout</string>
+    
+    <!-- Login -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    
+    <!-- Menu Items -->
+    <string name="share">Share</string>
+    <string name="add_to_meal_plan">Add to Meal Plan</string>
+</resources>

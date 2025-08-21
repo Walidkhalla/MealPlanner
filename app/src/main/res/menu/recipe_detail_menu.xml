@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+    
+    <item
+        android:id="@+id/action_add_to_meal_plan"
+        android:icon="@drawable/ic_add_to_meal"
+        android:title="Add to Meal Plan"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <action android:id="@+id/action_global_recipeSelectionFragment"
+        app:destination="@id/recipeSelectionFragment" />
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.walid.abahri.mealplanner.UI.LoginFragment"
+        tools:layout="@layout/fragment_login" >
+        <!-- Action: Login -> Dashboard (on successful login) -->
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <!-- Action: Login -> Register -->
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    
+    <!-- Register Fragment -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.walid.abahri.mealplanner.UI.RegisterFragment"
+        tools:layout="@layout/fragment_register" >
+        <!-- Action: Register -> Login -->
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Dashboard Fragment -->
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.walid.abahri.mealplanner.UI.DashboardFragment"
+        tools:layout="@layout/fragment_dashboard" >
+        <!-- Actions: Dashboard -> other sections -->
+        <action
+            android:id="@+id/action_dashboardFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_mealPlanFragment"
+            app:destination="@id/mealPlanFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_groceryListFragment"
+            app:destination="@id/groceryListFragment" />
+    </fragment>
+
+    <!-- Recipe List Fragment -->
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="com.walid.abahri.mealplanner.UI.RecipeListFragment"
+        tools:layout="@layout/fragment_recipe_list" >
+        <!-- Action to add/edit recipe -->
+        <action
+            android:id="@+id/action_recipeListFragment_to_addEditRecipeFragment"
+            app:destination="@id/addEditRecipeFragment" />
+        <!-- Action to view recipe details -->
+        <action
+            android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+    <!-- Add/Edit Recipe Fragment -->
+    <fragment
+        android:id="@+id/addEditRecipeFragment"
+        android:name="com.walid.abahri.mealplanner.UI.AddEditRecipeFragment"
+        tools:layout="@layout/fragment_add_edit_recipe" >
+        <argument
+            android:name="recipeId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Meal Plan Fragment -->
+    <fragment
+        android:id="@+id/mealPlanFragment"
+        android:name="com.walid.abahri.mealplanner.UI.MealPlanFragment"
+        tools:layout="@layout/fragment_meal_plan" >
+        <!-- Action to select recipe for meal plan -->
+        <action
+            android:id="@+id/action_mealPlanFragment_to_recipeSelectionFragment"
+            app:destination="@id/recipeSelectionFragment" />
+        <!-- Action to view recipe details -->
+        <action
+            android:id="@+id/action_mealPlanFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+
+    <!-- Recipe Selection Fragment (for meal planning) -->
+    <fragment
+        android:id="@+id/recipeSelectionFragment"
+        android:name="com.walid.abahri.mealplanner.UI.RecipeSelectionFragment"
+        tools:layout="@layout/fragment_recipe_selection" >
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="mealType"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Grocery List Fragment -->
+    <fragment
+        android:id="@+id/groceryListFragment"
+        android:name="com.walid.abahri.mealplanner.UI.GroceryListFragment"
+        tools:layout="@layout/fragment_grocery_list" />
+    <!-- Recipe Detail Fragment -->
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.walid.abahri.mealplanner.UI.RecipeDetailFragment"
+        tools:layout="@layout/fragment_recipe_detail" >
+        <!-- Action to edit recipe -->
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_addEditRecipeFragment"
+            app:destination="@id/addEditRecipeFragment" />
+    </fragment>
+    
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.walid.abahri.mealplanner.UI.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

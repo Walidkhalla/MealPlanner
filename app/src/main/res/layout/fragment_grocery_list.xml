@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".UI.GroceryListFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:title="Grocery List"
+            app:menu="@menu/grocery_list_menu"
+            app:titleTextAppearance="@style/TextAppearance.App.TitleMedium"
+            app:titleTextColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/searchContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:background="@color/background_light">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/searchInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/primary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/primary"
+                app:startIconDrawable="@drawable/ic_search"
+                app:startIconTint="@color/primary"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Search items..."
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionSearch" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonFilter"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filter"
+                android:textColor="@color/primary"
+                app:iconTint="@color/primary"
+                app:rippleColor="@color/primary_light"
+                app:icon="@drawable/ic_filter" />
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabMode="scrollable"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/secondary"
+            app:tabIndicatorHeight="3dp"
+            app:tabTextColor="@color/text_secondary"
+            app:tabSelectedTextColor="@color/secondary"
+            app:tabRippleColor="@color/secondary_light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/progressCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/primary_light"
+                app:strokeWidth="1dp">
+                
+                <LinearLayout
+                    android:id="@+id/progressContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/textViewProgress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Items checked: 0/0"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarItems"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:progressTint="@color/secondary"
+                        android:progressBackgroundTint="@color/secondary_light" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groceryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:clipToPadding="false" />
+
+            <TextView
+                android:id="@+id/textViewEmptyList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No grocery items found"
+                android:textAlignment="center"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:padding="32dp"
+                android:drawableTop="@drawable/ic_shopping_cart"
+                android:drawablePadding="16dp"
+                android:drawableTint="@color/text_secondary"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabAddItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add grocery item"
+        android:text="Add Item"
+        android:textColor="@color/white"
+        android:icon="@drawable/ic_add"
+        app:iconTint="@color/white"
+        app:backgroundTint="@color/accent" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

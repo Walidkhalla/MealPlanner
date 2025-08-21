@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fitsSystemWindows="true"
+    tools:context=".UI.RecipeListFragment">
+
+    <!-- Header with green background -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/primary"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Recipes"
+                android:textAppearance="@style/TextAppearance.App.TitleLarge"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discover delicious meal ideas"
+                android:textAppearance="@style/TextAppearance.App.BodySmall"
+                android:textColor="@color/white"
+                android:alpha="0.8" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Search Bar -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchBarContainer"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="@color/search_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/filterButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchViewRecipes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="Search recipes..."
+                app:searchIcon="@drawable/ic_search" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Filter Button -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/filterButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/primary"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchBarContainer">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_filter"
+                app:tint="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Category Filter Tabs -->
+        <HorizontalScrollView
+            android:id="@+id/categoryScroller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@+id/searchBarContainer">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="16dp">
+
+                <!-- All Filter -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategoryAll"
+                    style="@style/Widget.MealPlanner.FilterTab.Selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="All" />
+
+                <!-- Breakfast Filter -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategoryBreakfast"
+                    style="@style/Widget.MealPlanner.FilterTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Breakfast" />
+
+                <!-- Lunch Filter -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategoryLunch"
+                    style="@style/Widget.MealPlanner.FilterTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Lunch" />
+
+                <!-- Dinner Filter -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategoryDinner"
+                    style="@style/Widget.MealPlanner.FilterTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Dinner" />
+
+                <!-- Snacks Filter -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCategorySnacks"
+                    style="@style/Widget.MealPlanner.FilterTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Snacks" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Recipe Count and View Toggle -->
+        <TextView
+            android:id="@+id/recipeCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="2 recipes found"
+            android:textAppearance="@style/TextAppearance.App.BodySmall"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoryScroller" />
+
+        <!-- View Toggle Buttons -->
+        <LinearLayout
+            android:id="@+id/viewToggleContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_toggle_container"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recipeCountText">
+
+            <!-- Grid View Button -->
+            <ImageButton
+                android:id="@+id/btnGridView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_toggle_selected"
+                android:contentDescription="Grid View"
+                android:src="@drawable/ic_grid"
+                app:tint="@color/white" />
+
+            <!-- List View Button -->
+            <ImageButton
+                android:id="@+id/btnListView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="List View"
+                android:src="@drawable/ic_list"
+                app:tint="?attr/colorOnSurface" />
+        </LinearLayout>
+
+        <!-- Recipes RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRecipes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipeCountText"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_recipe_card" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/emptyStateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_recipe"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/textViewEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16dp"
+                android:gravity="center"
+                android:text="No recipes found\nTap + to add your first recipe"
+                android:textAppearance="@style/TextAppearance.App.BodyMedium"
+                android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddRecipe"
+        style="@style/Widget.MealPlanner.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add Recipe"
+        android:src="@drawable/ic_add" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
